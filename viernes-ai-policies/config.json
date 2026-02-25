@@ -1,0 +1,92 @@
+{
+  "version": 1,
+  "pre_flight": {
+    "version": 1,
+    "guardrails": [
+      {
+        "name": "Moderation",
+        "config": {
+          "categories": [
+            "sexual",
+            "sexual/minors",
+            "hate",
+            "hate/threatening",
+            "harassment",
+            "harassment/threatening",
+            "self-harm",
+            "self-harm/intent",
+            "self-harm/instructions",
+            "violence",
+            "violence/graphic",
+            "illicit",
+            "illicit/violent"
+          ]
+        }
+      },
+      {
+        "name": "Prompt Injection Detection",
+        "config": {
+          "confidence_threshold": 0.7,
+          "model": "gpt-4.1-mini",
+          "include_reasoning": False
+        }
+      }
+    ]
+  },
+  "input": {
+    "version": 1,
+    "guardrails": [
+      {
+        "name": "Jailbreak",
+        "config": {
+          "model": "gpt-4.1-mini",
+          "confidence_threshold": 0.7,
+          "max_turns": 10,
+          "include_reasoning": False
+        }
+      },
+      {
+        "name": "Off Topic Prompts",
+        "config": {
+          "model": "gpt-4.1-mini",
+          "confidence_threshold": 0.7,
+          "system_prompt_details": "Asistente de ventas de un desarrollo inmobiliario residencial. PERMITIDO: precios, unidades, amenidades, ubicación, planes de pago, citas y visitas, proceso de compra. NO PERMITIDO: política, consejos médicos o legales ajenos a la compra, temas sin relación al proyecto.",
+          "max_turns": 10,
+          "include_reasoning": False
+        }
+      }
+    ]
+  },
+  "output": {
+    "version": 1,
+    "guardrails": [
+      {
+        "name": "Contains PII",
+        "config": {
+          "entities": [
+            "CREDIT_CARD",
+            "CVV",
+            "CRYPTO",
+            "IBAN_CODE",
+            "BIC_SWIFT",
+            "US_BANK_NUMBER",
+            "US_SSN",
+            "US_ITIN"
+          ],
+          "detect_encoded_pii": False,
+          "block": True
+        }
+      },
+      {
+        "name": "NSFW Text",
+        "config": {
+          "model": "gpt-4.1-mini",
+          "confidence_threshold": 0.7,
+          "max_turns": 10,
+          "include_reasoning": False
+        }
+      }
+    ]
+  }
+}
+
