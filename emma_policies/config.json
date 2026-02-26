@@ -28,7 +28,7 @@
         "config": {
           "confidence_threshold": 0.7,
           "model": "gpt-4.1-mini",
-          "include_reasoning": False
+          "include_reasoning": false
         }
       }
     ]
@@ -42,7 +42,7 @@
           "model": "gpt-4.1-mini",
           "confidence_threshold": 0.7,
           "max_turns": 10,
-          "include_reasoning": False
+          "include_reasoning": false
         }
       } 
     ]
@@ -56,7 +56,7 @@
           "model": "gpt-4.1-mini",
           "confidence_threshold": 0.7,
           "max_turns": 10,
-          "include_reasoning": False
+          "include_reasoning": false
         }
       }
     ]
